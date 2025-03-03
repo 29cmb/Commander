@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "commander",
+  "version": "${version}",
+  "name": "Commander",
+  "description": "A visual way to run commands",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/commander/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "xyz.devcmb.commander.client.CommanderClient"
+    ],
+    "main": [
+      "xyz.devcmb.commander.Commander"
+    ]
+  },
+  "mixins": [
+    "commander.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
