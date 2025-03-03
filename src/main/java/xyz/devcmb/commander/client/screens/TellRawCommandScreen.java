@@ -1,9 +1,11 @@
 package xyz.devcmb.commander.client.screens;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import xyz.devcmb.commander.Commander;
@@ -57,7 +59,7 @@ public class TellRawCommandScreen extends Screen {
             if(color.isEmpty()) color = "#ffffff";
 
             this.client.player.networkHandler.sendCommand(
-                "tellraw @a {\"text\":\"" + this.textField.getText() + "\",\"font\":\"" + font + "\",\"color\":\"" + color + "\"}"
+                "tellraw @s {\"text\":\"" + this.textField.getText() + "\",\"font\":\"" + font + "\",\"color\":\"" + color + "\"}"
             );
         }).dimensions(centerX + 6, centerY + 143, textFieldWidth, 15)
         .build();

@@ -17,9 +17,6 @@
       "xyz.devcmb.commander.Commander"
     ]
   },
-  "mixins": [
-    "commander.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
