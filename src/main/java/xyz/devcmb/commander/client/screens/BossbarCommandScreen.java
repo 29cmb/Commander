@@ -4,6 +4,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -16,7 +17,7 @@ public class BossbarCommandScreen extends Screen {
     private ButtonWidget sendButton;
 
     public BossbarCommandScreen() {
-        super(Text.of("Bossbar"));
+        super(Text.empty());
     }
 
     @Override
@@ -71,7 +72,7 @@ public class BossbarCommandScreen extends Screen {
                             "bossbar set " + this.idField.getText() + " color " + color
                     );
                     this.client.player.networkHandler.sendCommand(
-                            "bossbar set " + this.idField.getText() + " progress 100"
+                            "bossbar set " + this.idField.getText() + " value 100"
                     );
                 }).dimensions(centerX + 6, centerY + 143, textFieldWidth, 16)
                 .build();
@@ -87,7 +88,7 @@ public class BossbarCommandScreen extends Screen {
 
         int centerX = (width - backgroundWidth) / 2;
         int centerY = (height - backgroundHeight) / 2;
-        context.drawTexture(TEXTURE, centerX, centerY, 0.0F, 0.0F, backgroundWidth, backgroundHeight, 256, 256);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, centerX, centerY, 0.0F, 0.0F, backgroundWidth, backgroundHeight, 256, 256);
 
         this.textField.render(context, mouseX, mouseY, delta);
         this.idField.render(context, mouseX, mouseY, delta);

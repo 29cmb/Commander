@@ -5,12 +5,14 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import xyz.devcmb.commander.Commander;
 
 public class TellRawCommandScreen extends Screen {
+    // cc -> Command Creation
     private static final Identifier TEXTURE = Identifier.of("commander", "textures/gui/cc/tell_raw.png");
     private TextFieldWidget textField;
     private TextFieldWidget fontField;
@@ -18,7 +20,7 @@ public class TellRawCommandScreen extends Screen {
     private ButtonWidget sendButton;
 
     public TellRawCommandScreen() {
-        super(Text.of("TellRaw"));
+        super(Text.empty());
     }
 
     @Override
@@ -75,7 +77,7 @@ public class TellRawCommandScreen extends Screen {
 
         int centerX = (width - backgroundWidth) / 2;
         int centerY = (height - backgroundHeight) / 2;
-        context.drawTexture(TEXTURE, centerX, centerY, 0.0F, 0.0F, backgroundWidth, backgroundHeight, 256, 256);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, centerX, centerY, 0.0F, 0.0F, backgroundWidth, backgroundHeight, 256, 256);
 
         this.textField.render(context, mouseX, mouseY, delta);
         this.fontField.render(context, mouseX, mouseY, delta);
